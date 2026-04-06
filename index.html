@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>AI Trading Terminal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://s3.tradingview.com/tv.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body class="bg-gray-900 text-white">
+
+<div class="flex h-screen">
+
+  <!-- SIDEBAR -->
+  <div class="w-60 bg-gray-800 p-4">
+    <h1 class="text-xl font-bold mb-6">AI Terminal</h1>
+    <ul class="space-y-3">
+      <li>🏠 Dashboard</li>
+      <li>🐋 Whale</li>
+      <li>🤖 Auto Trade</li>
+      <li>🏆 Leaderboard</li>
+    </ul>
+  </div>
+
+  <!-- MAIN -->
+  <div class="flex-1 p-6">
+
+    <!-- TOP -->
+    <div class="flex justify-between mb-4">
+      <h2 class="text-2xl font-bold">BTC/USDT</h2>
+      <div id="price">Loading...</div>
+    </div>
+
+    <!-- CHART -->
+    <div id="tv_chart" class="h-64 mb-4"></div>
+
+    <!-- SIGNAL -->
+    <div class="bg-gray-800 p-4 rounded-xl mb-4">
+      <h3>AI Signal</h3>
+      <div id="signal" class="text-2xl">WAIT</div>
+      <div id="confidence"></div>
+    </div>
+
+    <!-- WHALE -->
+    <div class="bg-gray-800 p-4 rounded-xl mb-4">
+      <h3>🐋 Whale Activity</h3>
+      <div id="whale"></div>
+    </div>
+
+    <!-- AUTO TRADE -->
+    <div class="bg-gray-800 p-4 rounded-xl mb-4">
+      <h3>🤖 Auto Trade</h3>
+      <button onclick="toggleAuto()" class="bg-blue-500 px-3 py-1 rounded">
+        Toggle
+      </button>
+      <div id="autoStatus">OFF</div>
+    </div>
+
+    <!-- LEADERBOARD -->
+    <div class="bg-gray-800 p-4 rounded-xl mb-4">
+      <h3>🏆 Leaderboard</h3>
+      <div id="leaderboard"></div>
+    </div>
+
+    <button onclick="executeTrade()" class="bg-green-500 px-4 py-2 rounded">
+      Execute Trade
+    </button>
+
+  </div>
+</div>
+
+<script>
+new TradingView.widget({
+  container_id: "tv_chart",
+  symbol: "BINANCE:BTCUSDT",
+  interval: "5",
+  theme: "dark"
+});
+</script>
+
+</body>
+</html>
